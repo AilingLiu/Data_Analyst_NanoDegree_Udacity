@@ -22,3 +22,6 @@ Has the difference been consistent over time?
 What does the overall trend look like? Is the world getting hotter or cooler? Has the trend been consistent over the last few hundred years?
 
 [Project Rubics](https://review.udacity.com/#!/rubrics/1125/view)
+
+# solution
+[View](Explore_Weather_Trends.ipynb)
