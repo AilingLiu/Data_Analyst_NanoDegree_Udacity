@@ -1,4 +1,4 @@
-# Data_Analyst_NanoDegree_Udacity
+# Data Analyst NanoDegree Udacity
 This repository contains notes and projects from [Udacity Data Analyst Nanodegree](https://www.udacity.com/course/data-analyst-nanodegree--nd002).
 
 
