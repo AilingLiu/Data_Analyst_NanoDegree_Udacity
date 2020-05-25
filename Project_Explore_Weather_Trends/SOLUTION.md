@@ -22,7 +22,7 @@ WHERE city = 'Berlin';
 ![](images/Rolling_Summary_of_Berlin_and_Global.png)
 
 **Chart 2**
-![](images/ten_year_rolling _average_temperature.png)
+![](images/ten_year_rolling_average_temperature.png)
 
 # observations
 
