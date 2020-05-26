@@ -22,7 +22,7 @@ WHERE city = 'Berlin';
 ![](images/Rolling_Summary_of_Berlin_and_Global.png)
 
 **Chart 2**
-![](images/ten_year_rolling_average_temperature.png)
+![](images/ten_year_rolling_average_temperature_resize.png)
 
 # observations
 
@@ -39,4 +39,4 @@ Temperature of Berlin and Global were both increasing over the years. The slope 
 It became hotter over the years, but there was exception at around 1810s. In the world, the average temperature was 8.3 in 1800s, then it dropped to 7.3 in 1810s. During this time, Berlin maintained at 8 degree.
 
 * Is your city hotter or cooler on average compared to the global average? Has the difference been consistent over time?
-The 10 year rolling average linechart shows Berlin is above global average in general. In general, Berlin is 0.5 degree more than the global temperature. The largest difference was at 1819, where the average rolling differences in the past decade was 1.28, being Berlin is 1.28 degree hotter than global.
+The 10 year rolling average line chart shows Berlin is above global average in general. In general, Berlin is 0.5 degree more than the global temperature. The largest difference was at 1819, where the average rolling differences in the past decade was 1.28, being Berlin is 1.28 degree hotter than global.
