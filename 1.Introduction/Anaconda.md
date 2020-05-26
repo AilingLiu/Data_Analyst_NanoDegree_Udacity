@@ -1,0 +1,67 @@
+
+# Anaconda
+
+Welcome to this lesson on using Anaconda to manage packages and environments for use with Python. With Anaconda, it's simple to install the packages you'll often use in data science work. You'll also use it to create virtual environments that make working on multiple projects much less mind-twisting. Anaconda has simplified my workflow and solved a lot of issues I had dealing with packages and multiple Python versions.
+
+Anaconda is actually a distribution of software that comes with `conda`, Python, and over 150 scientific packages and their dependencies. The application `conda` is a package and environment manager. Anaconda is a fairly large download (\~500 MB) because it comes with the most common data science packages in Python. If you don't need all the packages or need to conserve bandwidth or storage space, there is also Miniconda, a smaller distribution that includes only conda and Python. Miniconda can do everything Anaconda does, but doesn't have the preinstalled packages. You can still install any of the available packages with conda, it just doesn't come with them, so either Anaconda or Miniconda are fine for this course.
+
+
+Conda is a program you'll be using exclusively from the command line, so if you aren't comfortable using it, check out this [command prompt tutorial](https://www.lynda.com/IT-Infrastructure-tutorials/Windows-command-line-basics/497312/513424-4.html) for Windows or our Linux Command Line Basics course for OSX/Linux.
+
+You probably already have Python installed and wonder why you need this at all. First, since Anaconda comes with a bunch of data science packages, you'll be all set to start working with data. Secondly, using conda to manage your packages and environments will reduce future issues dealing with the various libraries you'll be using.
+
+# Environments
+
+Along with managing packages, Conda is also a virtual environment manager. It's similar to virtualenv and pyenv, other popular environment managers.
+
+Environments allow you to separate and isolate the packages you are using for different projects. Often you’ll be working with code that depends on different versions of some library. For example, you could have code that uses new features in Numpy, or code that uses old features that have been removed. It’s practically impossible to have two versions of Numpy installed at once. Instead, you should make an environment for each version of Numpy then work in the appropriate environment for the project.
+
+This issue also happens a lot when dealing with Python 2 and Python 3. You might be working with old code that doesn’t run in Python 3 and new code that doesn’t run in Python 2. Having both installed can lead to a lot of confusion and bugs. It’s much better to have separate environments.
+
+You can also export the list of packages in an environment to a file, then include that file with your code. This allows other people to easily load all the dependencies for your code. Pip has similar functionality with `pip freeze > requirements.txt`.
+
+# Managing environments
+As I mentioned before, conda can be used to create environments to isolate your projects. To create an environment, use conda create -n env_name list of packages in your terminal. Here `-n env_name` sets the name of your environment (-n for name) and list of packages is the list of packages you want installed in the environment. For example, to create an environment named `my_env` and install numpy in it, type `conda create -n my_env numpy`.
+
+When creating an environment, you can specify which version of Python to install in the environment. This is useful when you're working with code in both Python 2.x and Python 3.x. To create an environment with a specific Python version, do something like `conda create -n py3 python=3` or `conda create -n py2 python=2`. I actually have both of these environments on my personal computer. I use them as general environments not tied to any specific project, but rather for general work with each Python version easily accessible. These commands will install the most recent version of Python 3 and 2, respectively. To install a specific version, use `conda create -n py python=3.3` for Python 3.3.
+
+# Entering an environment
+
+Once you have an environment created, use `conda activate my_env` to enter it.
+
+When you're in the environment, you'll see the environment name in the terminal prompt. Something like (my_env) ~ $. The environment has only a few packages installed by default, plus the ones you installed when creating it. You can check this out with conda list. Installing packages in the environment is the same as before: `conda install package_name`. Only this time, the specific packages you install will only be available when you're in the environment. To leave the environment, type conda deactivate (on OSX/Linux). On Windows, use deactivate.
+
+Note: conda activate and conda deactivate only work on conda 4.6 and later versions. For conda versions prior to 4.6, run activate or deactivate (on Windows), source activate or source deactivate (on OSX/Linux)
+
+*QUIZ QUESTION*
+
+> What command would you use to create an environment named data installed with Python 3.6, numpy, and pandas?
+Ans: `conda create -n data python=3.6 numpy pandas`.
+
+# Saving and loading environments
+A really useful feature is sharing environments so others can install all the packages used in your code, with the correct versions. You can save the packages to a [YAML](http://www.yaml.org/) file with `conda env export > environment.yaml`. The first part `conda env export` writes out all the packages in the environment, including the Python version.
+
+Above you can see the name of the environment and all the dependencies (along with versions) are listed. The second part of the export command, `> environment.yaml` writes the exported text to a YAML file environment.yaml. This file can now be shared and others will be able to create the same environment you used for the project.
+
+To create an environment from an environment file use `conda env create -f environment.yaml`. This will create a new environment with the same name listed in environment.yaml.
+
+# Listing environments
+If you forget what your environments are named (happens to me sometimes), use conda env list to list out all the environments you've created. You should see a list of environments, there will be an asterisk next to the environment you're currently in. The default environment, the environment used when you aren't in one, is called base.
+
+# Removing environments
+If there are environments you don't use anymore, `conda env remove -n env_name` will remove the specified environment (here, named env_name).
+
+
+# Best practices
+
+## Using environments
+One thing that’s helped me tremendously is having separate environments for Python 2 and Python 3. I used `conda create -n py2 python=2` and `conda create -n py3 python=3` to create two separate environments, py2 and py3. Now I have a general use environment for each Python version. In each of those environments, I've installed most of the standard data science packages (numpy, scipy, pandas, etc.). Remember that when you set up an environment initially, you'll only start with the standard packages and whatever packages you specify in your conda create statement.
+
+I’ve also found it useful to create environments for each project I’m working on. It works great for non-data related projects too like web apps with Flask. For example, I have an environment for my personal blog using [Pelican](http://docs.getpelican.com/en/stable/).
+
+## Sharing environments
+When sharing your code on GitHub, it's good practice to make an environment file and include it in the repository. This will make it easier for people to install all the dependencies for your code. I also usually include a pip `requirements.txt` file using `pip freeze` (learn more here) for people not using conda.
+
+## More to learn
+To learn more about conda and how it fits in the Python ecosystem, check out this article by Jake Vanderplas: [Conda myths and misconceptions](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/). And here's the [conda documentation](https://docs.conda.io/projects/conda) you can reference later, and a link to a [cheatsheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html) to help you basic conda commands.
+
