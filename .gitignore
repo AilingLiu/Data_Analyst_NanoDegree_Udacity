@@ -1,0 +1,4 @@
+*.txt
+Data_Wranggling
+Project_Data_Wrangling/*
+!Project_Data_Wrangling/wrangle_act_final.ipynb
